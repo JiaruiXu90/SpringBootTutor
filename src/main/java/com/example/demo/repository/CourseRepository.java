@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public class CourseRepository {
+    int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
     List<Course> courses = new ArrayList<>();
 
     public CourseRepository() {
@@ -42,5 +43,28 @@ public class CourseRepository {
         }
 
         return new ArrayList<Course>();
+    }
+
+    public List<List<Integer>> twoSum(String input) {
+        int target = Integer.parseInt(input);
+        List<List<Integer>> res = new ArrayList<>();
+
+        int l = 0, r = arr.length - 1;
+
+        while (l < r) {
+            if (arr[l] + arr[r] == target) {
+                List<Integer> list = new ArrayList<>();
+                list.add(arr[l]);
+                list.add(arr[r]);
+                res.add(list);
+                l++;
+            } else if (arr[l] + arr[r] < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+
+        return res;
     }
 }

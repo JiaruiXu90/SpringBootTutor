@@ -43,4 +43,12 @@ public class CourseController {
 
         return new ResponseEntity(findedCourse, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/twoSum/{inputString}", produces = "application/json")
+    public HttpEntity twoSum(@PathVariable("inputString") String inputString) {
+
+        List<List<Integer>> res = courseService.twoSum(inputString);
+
+        return new ResponseEntity(res, HttpStatus.OK);
+    }
 }
